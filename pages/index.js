@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import TodoList from '../container/TodoList'
 
 export default function Home() {
   return (
@@ -9,8 +10,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className='bg-blue-400 text-white mx-auto'>
-        <h1 className='text-center'>This is todo app</h1>
+      <main className=' bg-slate-500 h-screen'>
+        <TodoList />
       </main>
     </div>
   )

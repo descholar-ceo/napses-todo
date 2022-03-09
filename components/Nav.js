@@ -14,7 +14,7 @@ export const Nav = () => {
         } catch (error) {
             console.log(error);
         }
-    }, [])
+    }, []);
 
     const loginBtnClasses = classNames(
         'outline-none',
@@ -34,10 +34,10 @@ export const Nav = () => {
         }
     }
   return (
-    <div className='flex justify-between p-5 bg-blue-200'>
+    <nav className='flex justify-between p-5 bg-slate-600 w-full'>
         <div>
             <Link href="https://www.napses.com/">
-                <div className='cursor-pointer text-6xl'>
+                <div className='cursor-pointer text-6xl font-extrabold'>
                     <span className='text-blue-700'>Napses</span>
                     <span className='text-blue-500'>Todos</span>
                 </div>
@@ -47,13 +47,15 @@ export const Nav = () => {
             <Button
                 classes='bg-blue-600 text-white p-3 mx-5 rounded-lg'
                 text='Create a todo'
-                handleClick={handleLogout}
+                handleClick={() => {}}
             />
             <Button
                 classes={loginBtnClasses}
-                text={!!session ? 'Logout' : 'Login'}>
+                text={!!session ? 'Logout' : 'Login'}
+                handleClick={handleLogout}
+            >
             </Button>
         </div>
-    </div>
+    </nav>
   )
 }
