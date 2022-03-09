@@ -1,20 +1,5 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "name": "Project initialization",
-      "description": "This is to initialize the project",
-      "time": "2022-03-08 07:00",
-      "status": "in-progress"
-    },
-    {
-      "id": 2,
-      "name": "Project analysis",
-      "description": "Analyze the project from the meeting",
-      "time": "2022-03-07 08:00",
-      "status": "completed"
-    }
-  ],
+  "todos": [],
   "users": [
     {
       "id": 1,
@@ -30,5 +15,12 @@
       "password": "password"
     }
   ],
-  "sessions": [{"id": 1, "userId": 1, "createdAt": "2022-03-08", "expires": "2022-03-10"}]
+  "sessions": [
+    {
+      "id": 1,
+      "userId": 1,
+      "createdAt": "2022-03-08",
+      "expires": "2022-03-10"
+    }
+  ]
 }
