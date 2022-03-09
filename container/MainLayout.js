@@ -3,7 +3,7 @@ import { Nav } from '../components/Nav'
 
 export default function MainLayout({ children }) {
   return (
-    <div>
+    <div className=' bg-slate-500'>
         <Nav/>
         {children}
     </div>

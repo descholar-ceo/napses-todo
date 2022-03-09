@@ -17,6 +17,6 @@ export default function TodoList() {
     });
     const noTodosYet = <div><p className='text-center text-red-300 text-xl font-extrabold'>No Todos Yet</p></div>
   return (
-    <div className='w-1/2 mx-auto p-5'>{(!!todos && todos.length !== 0) ? todosElts : noTodosYet}</div>
+    <div className='mx-auto p-5'>{(!!todos && todos.length !== 0) ? todosElts : noTodosYet}</div>
   )
 }
