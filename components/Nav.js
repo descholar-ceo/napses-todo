@@ -69,6 +69,7 @@ export const Nav = () => {
                 handleClick={handleLogout}
             >
             </Button>
+            <span className='hover:border-2 p-3 mx-5 rounded-lg hover:bg-slate-100 hover:text-slate-600 hover:border-slate-600 bg-slate-800 text-white'><Link href="signup">Register</Link></span>
         </div>
     </nav>
   )
