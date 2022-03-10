@@ -51,9 +51,6 @@ export default function TodoItem({ todo }) {
                 <Button handleClick={handleCompleted} classes={statusBtnClass} text={gottenTodo.completed ? 'Completed' : 'Complete'} />
             </span>
             <span className='inline-block mx-2'>
-                <Button classes='bg-blue-200 px-3 py-1 rounded-md' text='Edit' />
-            </span>
-            <span className='inline-block mx-2'>
                 <Button handleClick={handleDelete} classes='bg-red-200 px-3 py-1 rounded-md' text='Delete' />
             </span>
         </footer>
