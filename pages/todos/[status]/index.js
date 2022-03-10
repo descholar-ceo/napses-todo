@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 import DynamicTodoList from '../../../container/DynamicTodoList';
 
 export default function Todos() {
-    const router = useRouter();
-    const { status } = router.query;
   return (
-    <div><DynamicTodoList status={status}/></div>
+    <div className='w-1/2 mx-auto'><DynamicTodoList /></div>
   )
 }

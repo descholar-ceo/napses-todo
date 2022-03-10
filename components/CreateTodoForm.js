@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '../components/Button';
+import Button from './Button';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-export default function Form() {
+export default function CreateTodoForm() {
   const router = useRouter();
   const { register, handleSubmit, formState: { errors }} = useForm();
   const submitData = async (data) => {
@@ -48,10 +48,10 @@ export default function Form() {
           >Completed</label>
           <input
             type='radio'
-            name='completed'
-            value='true'
+            name='status'
+            value='completed'
             id='completed'
-            {...register('completed', { required: true })}
+            {...register('status', { required: true })}
           />
         </div>
         <div className='mx-2'>
@@ -62,9 +62,9 @@ export default function Form() {
           <input
             id='in-progress'
             type='radio'
-            name='completed'
-            value='false'
-            {...register('completed', { required: true })}
+            name='status'
+            value='inprogress'
+            {...register('status', { required: true })}
           />
         </div>
       </div>

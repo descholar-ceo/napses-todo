@@ -1,8 +1,8 @@
 import React from 'react'
-import Form from '../components/Form'
+import CreateTodoForm from '../components/CreateTodoForm'
 
 export default function CreateTodo() {
   return (
-    <div><Form /></div>
+    <div><CreateTodoForm /></div>
   )
 }
