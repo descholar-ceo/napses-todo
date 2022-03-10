@@ -8,15 +8,24 @@ import classNames from 'classnames';
 export const Nav = () => {
     const router = useRouter();
     const [session, setSession] = useState([]);
+    const [todos, setTodos] = useState([]);
     useEffect(async () => {
         try {
             const mSession = await axios.get(`${process.env.NEXT_PUBLIC_API}/sessions`);
             setSession(mSession.data[0]);
+            const mTodos = await axios.get(`${process.env.NEXT_PUBLIC_API}/todos`);
+            setTodos(mTodos.data);
         } catch (error) {
             console.log(error);
         }
     }, []);
-
+    const todosNav =
+    (!!todos && todos.length !== 0) ?
+    <ul className='flex items-center text-green-300 text-lg'>
+        <li><Link href='/todos/completed'>Completed todos</Link></li>
+        <li className='mx-2'>|</li>
+        <li><Link href='/todos/inprogress'>In progress todos</Link></li>
+    </ul> : '';
     const loginBtnClasses = classNames(
         'outline-none',
         'hover:border-2',
@@ -47,6 +56,7 @@ export const Nav = () => {
                 </div>
             </Link>
         </div>
+        {todosNav}
         <div className='flex items-center'>
             <Button
                 classes='bg-blue-600 text-white p-3 mx-5 rounded-lg'
