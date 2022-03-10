@@ -15,6 +15,7 @@ export default function Form() {
       console.log({ error });
     }
   }
+  console.log({ errors });
   return (
     <form onSubmit={handleSubmit(submitData)} className='my-5 w-1/3 mx-auto border-2 p-2 rounded-lg border-slate-600 shadow-xl'>
       <input
@@ -23,16 +24,22 @@ export default function Form() {
         className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
         {...register('name', { required: true, minLength: '3' })}
       />
+      <p className='text-sm text-red-800 text-center'>{errors.name?.type === 'required' && 'name is required' }</p>
+      <p className='text-sm text-red-800 text-center'>{errors.name?.type === 'minLength' && 'minLength should be 3' }</p>
       <textarea
         placeholder='eg: todo description'
         className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
         {...register('description', { required: true, minLength: 3, maxLength: 200 })}
       ></textarea>
+      <p className='text-sm text-red-800 text-center'>{errors.description?.type === 'required' && 'description is required' }</p>
+      <p className='text-sm text-red-800 text-center'>{errors.description?.type === 'minLength' && 'minLength should be 3' }</p>
+      <p className='text-sm text-red-800 text-center'>{errors.description?.type === 'maxLength' && 'maxLength should be 200 characters' }</p>
       <input
         className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
         type='datetime-local'
         {...register('time', { required: true })}
       />
+      <p className='text-sm text-red-800 text-center'>{errors.time?.type === 'required' && 'time is required' }</p>
       <div className='flex my-1 p-2'>
         <div className='mx-2'>
           <label
@@ -61,6 +68,7 @@ export default function Form() {
           />
         </div>
       </div>
+      <p className='text-sm text-red-800 text-center'>{errors.completed?.type === 'required' && 'completed is required' }</p>
       <Button handleClick={handleSubmit(submitData)} classes='bg-blue-400 px-2 py-1 rounded-lg my-4' text='Save' />
     </form>
   )

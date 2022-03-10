@@ -4,7 +4,7 @@
       "name": "new todo project",
       "description": "this is a todo project app",
       "time": "2022-03-11T06:29",
-      "completed": "false",
+      "completed": false,
       "id": 1
     }
   ],
