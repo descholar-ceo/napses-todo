@@ -10,7 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className='w-1/2 mx-auto h-screen'>
+      <main className='w-1/2 mx-auto'>
         <TodoList />
       </main>
     </div>
