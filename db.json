@@ -2,24 +2,10 @@
   "todos": [
     {
       "name": "new todo project",
-      "description": "This is my todo app",
-      "time": "2022-03-10T06:09",
-      "completed": false,
+      "description": "this is a todo project app",
+      "time": "2022-03-11T06:29",
+      "completed": "false",
       "id": 1
-    },
-    {
-      "name": "new todo form",
-      "description": "This todo is new",
-      "time": "2022-03-10T06:11",
-      "completed": true,
-      "id": 2
-    },
-    {
-      "name": "this is a todo",
-      "description": "work on this todo project",
-      "time": "2022-03-18T06:12",
-      "completed": false,
-      "id": 3
     }
   ],
   "users": [

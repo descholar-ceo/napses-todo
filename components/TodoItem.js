@@ -1,9 +1,11 @@
 import axios from 'axios';
 import classNames from 'classnames'
+import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import Button from './Button'
 
 export default function TodoItem({ todo }) {
+    const router = useRouter();
     const [gottenTodo,setGottenTodo] = useState(todo);
     const cardClasses = classNames(
         'p-5',
@@ -34,9 +36,10 @@ export default function TodoItem({ todo }) {
             
         }
     }
-    const handleDelete = async () => {
+    const handleDelete = async (router) => {
         try {
             await axios.delete(`${process.env.NEXT_PUBLIC_API}/todos/${todo.id}`);
+            router.push('/');
         } catch (error) {
             
         }
@@ -51,7 +54,7 @@ export default function TodoItem({ todo }) {
                 <Button handleClick={handleCompleted} classes={statusBtnClass} text={gottenTodo.completed ? 'Completed' : 'Complete'} />
             </span>
             <span className='inline-block mx-2'>
-                <Button handleClick={handleDelete} classes='bg-red-200 px-3 py-1 rounded-md' text='Delete' />
+                <Button handleClick={() => handleDelete(router)} classes='bg-red-200 px-3 py-1 rounded-md' text='Delete' />
             </span>
         </footer>
     </div>

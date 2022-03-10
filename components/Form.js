@@ -21,17 +21,17 @@ export default function Form() {
         type='text'
         placeholder='eg: todo name'
         className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
-        {...register('name')}
+        {...register('name', { required: true, minLength: '3' })}
       />
       <textarea
         placeholder='eg: todo description'
         className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
-        {...register('description')}
+        {...register('description', { required: true, minLength: 3, maxLength: 200 })}
       ></textarea>
       <input
         className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
         type='datetime-local'
-        {...register('time')}
+        {...register('time', { required: true })}
       />
       <div className='flex my-1 p-2'>
         <div className='mx-2'>
@@ -44,7 +44,7 @@ export default function Form() {
             name='completed'
             value='true'
             id='completed'
-            {...register('completed')}
+            {...register('completed', { required: true })}
           />
         </div>
         <div className='mx-2'>
@@ -57,7 +57,7 @@ export default function Form() {
             type='radio'
             name='completed'
             value='false'
-            {...register('completed')}
+            {...register('completed', { required: true })}
           />
         </div>
       </div>
