@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 export default function Form() {
   const router = useRouter();
-  const { register, handleSubmit, watch, formState: { errors }} = useForm();
+  const { register, handleSubmit, formState: { errors }} = useForm();
   const submitData = async (data) => {
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API}/todos`, data, { headers: { 'Content-Type': 'application/json' }});
