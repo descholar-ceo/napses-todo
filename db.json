@@ -1,5 +1,13 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "id": 1,
+      "name": "Add project to board",
+      "description": "This is the project init",
+      "time": "2022-03-03",
+      "completed": false
+    }
+  ],
   "users": [
     {
       "id": 1,

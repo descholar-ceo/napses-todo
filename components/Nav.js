@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
 import Button from './Button';
 import classNames from 'classnames';
 
 export const Nav = () => {
+    const router = useRouter();
     const [session, setSession] = useState([]);
-    const [todos, setTodos] = useState([]);
     useEffect(async () => {
         try {
             const mSession = await axios.get(`${process.env.NEXT_PUBLIC_API}/sessions`);
@@ -33,10 +34,13 @@ export const Nav = () => {
             console.log({ error });
         }
     }
+    const handleCreate = () => {
+        router.push('/createTodo');
+    }
   return (
-    <nav className='flex justify-between p-5 bg-slate-600 w-full'>
+    <nav className='flex justify-between p-5 bg-slate-600 w-full shadow-xl'>
         <div>
-            <Link href="https://www.napses.com/">
+            <Link href="/">
                 <div className='cursor-pointer text-6xl font-extrabold'>
                     <span className='text-blue-700'>Napses</span>
                     <span className='text-blue-500'>Todos</span>
@@ -47,7 +51,7 @@ export const Nav = () => {
             <Button
                 classes='bg-blue-600 text-white p-3 mx-5 rounded-lg'
                 text='Create a todo'
-                handleClick={() => {}}
+                handleClick={handleCreate}
             />
             <Button
                 classes={loginBtnClasses}
