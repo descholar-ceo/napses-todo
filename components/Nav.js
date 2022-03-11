@@ -39,6 +39,10 @@ export const Nav = () => {
             console.log({ error });
         }
     }
+    const handleLogin = () => {
+        router.push('/login')
+    }
+    const createTodoBtnClass = classNames({ 'visible': !!session, 'invisible': !session })
   return (
     <nav className='flex justify-between p-5 bg-slate-600 w-full shadow-xl'>
         <div>
@@ -51,13 +55,13 @@ export const Nav = () => {
         </div>
         {todosNav}
         <div className='flex items-center'>
-            <span className='bg-blue-600 text-white p-3 mx-5 rounded-lg'>
+            <span className={`${createTodoBtnClass} bg-blue-600 text-white p-3 mx-5 rounded-lg`}>
                 <Link href='/createTodo'>Create todo</Link>
             </span>
             <Button
                 classes={`${loginBtnClasses} outline-none hover:border-2 p-3 mx-5 rounded-lg`}
                 text={!!session ? 'Logout' : 'Login'}
-                handleClick={handleLogout}
+                handleClick={!!session ? handleLogout : handleLogin}
             >
             </Button>
             <span className='hover:border-2 p-3 mx-5 rounded-lg hover:bg-slate-100 hover:text-slate-600 hover:border-slate-600 bg-slate-800 text-white'><Link href="signup">Register</Link></span>
