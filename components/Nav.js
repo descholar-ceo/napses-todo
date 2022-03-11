@@ -27,10 +27,6 @@ export const Nav = () => {
         <li><Link href='/todos/inprogress'>In progress todos</Link></li>
     </ul> : '';
     const loginBtnClasses = classNames(
-        'outline-none',
-        'hover:border-2',
-        'p-3 mx-5',
-        'rounded-lg',
         {
             'hover:bg-red-100 hover:text-red-600 hover:border-red-600 bg-red-600 text-white' : !!session,
             'hover:bg-blue-100 hover:text-blue-600 hover:border-blue-600 bg-blue-600 text-white': !session
@@ -42,9 +38,6 @@ export const Nav = () => {
         } catch (error) {
             console.log({ error });
         }
-    }
-    const handleCreate = () => {
-        router.push('/createTodo');
     }
   return (
     <nav className='flex justify-between p-5 bg-slate-600 w-full shadow-xl'>
@@ -58,13 +51,11 @@ export const Nav = () => {
         </div>
         {todosNav}
         <div className='flex items-center'>
+            <span className='bg-blue-600 text-white p-3 mx-5 rounded-lg'>
+                <Link href='/createTodo'>Create todo</Link>
+            </span>
             <Button
-                classes='bg-blue-600 text-white p-3 mx-5 rounded-lg'
-                text='Create a todo'
-                handleClick={handleCreate}
-            />
-            <Button
-                classes={loginBtnClasses}
+                classes={`${loginBtnClasses} outline-none hover:border-2 p-3 mx-5 rounded-lg`}
                 text={!!session ? 'Logout' : 'Login'}
                 handleClick={handleLogout}
             >
