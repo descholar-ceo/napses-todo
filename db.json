@@ -1,46 +1,54 @@
 {
-  "todos": [],
-  "users": [
+  "todos": [
     {
-      "id": 1,
-      "name": "Emma Swan",
-      "mobile": "07822",
-      "gender": "F",
-      "country": "US",
-      "hobbies": [
-        "music",
-        "movies"
-      ],
-      "email": "emma@swan.com",
-      "password": "password"
+      "name": "todo 1",
+      "description": "this is a todo one",
+      "time": "2022-03-11T09:28",
+      "status": "completed",
+      "id": 1
     },
     {
-      "name": "Emmanuel Mugirase",
-      "mobile": "emma@gmail.com",
-      "gender": "Male",
-      "country": "India",
-      "hobbies": [
-        "Music",
-        "Movies",
-        "Coding"
-      ],
-      "email": "emma@nuel.com",
-      "password": "123456",
+      "name": "todo 2",
+      "description": "this is a todo 2",
+      "time": "2022-03-11T09:28",
+      "status": "inprogress",
       "id": 2
     },
     {
-      "name": "new user",
+      "name": "todo 3",
+      "description": "this a todo three",
+      "time": "2022-03-11T09:30",
+      "status": "completed",
+      "id": 3
+    },
+    {
+      "name": "new todo",
+      "description": "this is a new todo application",
+      "time": "2022-03-14T11:38",
+      "status": "completed",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "name": "Mugirase Emmanuel",
       "mobile": "0782229462",
       "gender": "Male",
-      "country": "US",
+      "country": "Rwanda",
       "hobbies": [
         "Movies",
         "Coding"
       ],
-      "email": "newuser@new.ne",
+      "email": "emmanuel@gmail.com",
       "password": "123456",
-      "id": 3
+      "id": 1
     }
   ],
-  "sessions": []
+  "sessions": [
+    {
+      "userId": 1,
+      "createdAt": "2022-03-13T22:00:00.000Z",
+      "id": 1
+    }
+  ]
 }

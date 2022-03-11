@@ -7,12 +7,22 @@ import classNames from 'classnames';
 
 export const Nav = () => {
     const router = useRouter();
-    const [session, setSession] = useState([]);
+    const [session, setSession] = useState({});
     const [todos, setTodos] = useState([]);
     useEffect(async () => {
         try {
-            const mSession = await axios.get(`${process.env.NEXT_PUBLIC_API}/sessions`);
-            setSession(mSession.data[0]);
+            const sessionFromLocalStorage = JSON.parse(localStorage.getItem("session"));
+            if (!!sessionFromLocalStorage && sessionFromLocalStorage.id) {
+                const mSession = await axios.get(`${process.env.NEXT_PUBLIC_API}/sessions?id=${sessionFromLocalStorage.id}`);
+                if (!!mSession && mSession.data && mSession.data.length !== 0) {
+                    setSession(mSession.data[0]);
+                } else {
+                    localStorage.removeItem('session');
+                    router.push('/login'); 
+                }
+            } else {
+                router.push('/login');
+            }
             const mTodos = await axios.get(`${process.env.NEXT_PUBLIC_API}/todos`);
             setTodos(mTodos.data);
         } catch (error) {
@@ -28,21 +38,24 @@ export const Nav = () => {
     </ul> : '';
     const loginBtnClasses = classNames(
         {
-            'hover:bg-red-100 hover:text-red-600 hover:border-red-600 bg-red-600 text-white' : !!session,
-            'hover:bg-blue-100 hover:text-blue-600 hover:border-blue-600 bg-blue-600 text-white': !session
+            'hover:bg-red-100 hover:text-red-600 hover:border-red-600 bg-red-600 text-white' : !!session && !!session.id,
+            'hover:bg-blue-100 hover:text-blue-600 hover:border-blue-600 bg-blue-600 text-white': !session.id
         }
         )
     const handleLogout = async () => {
         try {
-            await axios.delete(`${process.env.NEXT_PUBLIC_API}/sessions/1`);
+            await axios.delete(`${process.env.NEXT_PUBLIC_API}/sessions/${session.id}`);
+            localStorage.removeItem("session");
+            router.replace('/login');
+            router.reload();
         } catch (error) {
             console.log({ error });
         }
     }
     const handleLogin = () => {
-        router.push('/login')
+        router.push('/login');
     }
-    const createTodoBtnClass = classNames({ 'visible': !!session, 'invisible': !session })
+    const createTodoBtnClass = classNames({ 'visible': !!session && session.id, 'invisible': !session.id })
   return (
     <nav className='flex justify-between p-5 bg-slate-600 w-full shadow-xl'>
         <div>
@@ -60,11 +73,13 @@ export const Nav = () => {
             </span>
             <Button
                 classes={`${loginBtnClasses} outline-none hover:border-2 p-3 mx-5 rounded-lg`}
-                text={!!session ? 'Logout' : 'Login'}
+                text={!!session && session.id ? 'Logout' : 'Login'}
                 handleClick={!!session ? handleLogout : handleLogin}
             >
             </Button>
-            <span className='hover:border-2 p-3 mx-5 rounded-lg hover:bg-slate-100 hover:text-slate-600 hover:border-slate-600 bg-slate-800 text-white'><Link href="signup">Register</Link></span>
+            <span
+                className='hover:border-2 p-3 mx-5 rounded-lg hover:bg-slate-100 hover:text-slate-600 hover:border-slate-600 bg-slate-800 text-white'>
+                    <Link href="/signup">Register</Link></span>
         </div>
     </nav>
   )

@@ -14,15 +14,15 @@ export default function LoginForm() {
         try {
         const gottenUser = await axios.get(`${process.env.NEXT_PUBLIC_API}/users?email=${data.email}&password=${data.password}`);
         if (!!gottenUser && gottenUser.data && gottenUser.data.length !== 0) {
-            const { givenDay, nextDay } = prepareDates(new Date().getTime());
-            const data = { userId: gottenUser.data[0].id, createdAt: new Date(givenDay), expires: new Date(nextDay) };
-            console.log({ data });
+            const { givenDay } = prepareDates(new Date().getTime());
+            const data = { userId: gottenUser.data[0].id, createdAt: new Date(givenDay) };
             const newSession = await axios.post(
                 `${process.env.NEXT_PUBLIC_API}/sessions`,
                 data,
                 { headers: { 'Content-Type': 'application/json' } },
             );
             if (!!newSession && newSession.data) {
+                localStorage.setItem("session", JSON.stringify(newSession.data));
                 router.push('/');
             } else {
                 return setLoginSuccess('fail');
