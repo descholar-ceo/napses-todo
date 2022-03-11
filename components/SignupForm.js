@@ -9,13 +9,12 @@ export default function SignupForm() {
   const { register, handleSubmit, formState: { errors }} = useForm();
   const submitData = async (data) => {
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API}/todos`, data, { headers: { 'Content-Type': 'application/json' }});
+      await axios.post(`${process.env.NEXT_PUBLIC_API}/users`, data, { headers: { 'Content-Type': 'application/json' }});
       router.push('/');
     } catch (error) {
       console.log({ error });
     }
   }
-  console.log({ errors });
   return (
     <form onSubmit={handleSubmit(submitData)} className='my-5 w-1/3 mx-auto border-2 p-2 rounded-lg border-slate-600 shadow-xl'>
       <div>
@@ -135,6 +134,26 @@ export default function SignupForm() {
           </div>
         </div>
         <p className='text-sm text-red-800 text-center'>{errors.hobbies?.type === 'required' && 'select at least a one hobby' }</p>
+      </div>
+      <div>
+        <input
+          type='email'
+          placeholder='Enter your email'
+          className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
+          {...register('email', { required: true, minLength: '3' })}
+        />
+        <p className='text-sm text-red-800 text-center'>{errors.email?.type === 'required' && 'email is required' }</p>
+        <p className='text-sm text-red-800 text-center'>{errors.email?.type === 'minLength' && 'minLength should be 3' }</p>
+      </div>
+      <div>
+        <input
+          type='password'
+          placeholder='Enter your password'
+          className='p-1 my-1 w-full rounded-md outline-none text-lg bg-slate-300'
+          {...register('password', { required: true, minLength: '3' })}
+        />
+        <p className='text-sm text-red-800 text-center'>{errors.password?.type === 'required' && 'password is required' }</p>
+        <p className='text-sm text-red-800 text-center'>{errors.password?.type === 'minLength' && 'minLength should be 3' }</p>
       </div>
       <Button handleClick={handleSubmit(submitData)} classes='bg-blue-400 px-2 py-1 rounded-lg my-4' text='Save' />
     </form>

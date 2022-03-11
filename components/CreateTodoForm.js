@@ -15,7 +15,6 @@ export default function CreateTodoForm() {
       console.log({ error });
     }
   }
-  console.log({ errors });
   return (
     <form onSubmit={handleSubmit(submitData)} className='my-5 w-1/3 mx-auto border-2 p-2 rounded-lg border-slate-600 shadow-xl'>
       <input
