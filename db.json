@@ -1,37 +1,5 @@
 {
-  "todos": [
-    {
-      "name": "Todo 1",
-      "description": "this is the first todo",
-      "time": "2022-03-10T07:09",
-      "status": "completed",
-      "id": 1,
-      "completed": true
-    },
-    {
-      "name": "Todo 2",
-      "description": "this is the first todo",
-      "time": "2022-03-10T07:09",
-      "status": "completed",
-      "id": 2,
-      "completed": true
-    },
-    {
-      "name": "Todo 3",
-      "description": "this is the first todo",
-      "time": "2022-03-10T07:09",
-      "status": "inprogress",
-      "id": 3,
-      "completed": true
-    },
-    {
-      "name": "Todo 4",
-      "description": "This is a todo 4",
-      "time": "2022-03-10T09:02",
-      "status": "completed",
-      "id": 4
-    }
-  ],
+  "todos": [],
   "users": [
     {
       "id": 1,
