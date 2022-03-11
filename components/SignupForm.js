@@ -90,23 +90,51 @@ export default function SignupForm() {
           <div className='flex'>
             <div className='mx-3'>
               <label className='mx-1' htmlFor='Music'>Music</label>
-              <input className='mx-1' type='checkbox' name='hobbies' id='Music' value='Music' />
+              <input
+                className='mx-1'
+                type='checkbox'
+                name='hobbies'
+                id='Music'
+                value='Music'
+                {...register('hobbies', { required: true })}
+              />
             </div>
             <div className='mx-3'>
               <label className='mx-1' htmlFor='Sport'>Sport</label>
-              <input className='mx-1' type='checkbox' name='hobbies' id='Sport' value='Sport' />
+              <input
+                className='mx-1'
+                type='checkbox'
+                name='hobbies'
+                id='Sport'
+                value='Sport'
+                {...register('hobbies', { required: true })}
+              />
             </div>
             <div className='mx-3'>
               <label className='mx-1' htmlFor='Movies'>Movies</label>
-              <input className='mx-1' type='checkbox' name='hobbies' id='Movies' value='Movies' />
+              <input
+                className='mx-1'
+                type='checkbox' 
+                name='hobbies' 
+                id='Movies' 
+                value='Movies'
+                {...register('hobbies', { required: true })}
+              />
             </div>
             <div className='mx-3'>
               <label className='mx-1' htmlFor='Coding'>Coding</label>
-              <input className='mx-1' type='checkbox' name='hobbies' id='Coding' value='Coding' />
+              <input 
+                className='mx-1' 
+                type='checkbox' 
+                name='hobbies' 
+                id='Coding' 
+                value='Coding' 
+                {...register('hobbies', { required: true })}
+              />
             </div>
           </div>
         </div>
-        <p className='text-sm text-red-800 text-center'>{errors.country?.type === 'required' && 'country is required' }</p>
+        <p className='text-sm text-red-800 text-center'>{errors.hobbies?.type === 'required' && 'select at least a one hobby' }</p>
       </div>
       <Button handleClick={handleSubmit(submitData)} classes='bg-blue-400 px-2 py-1 rounded-lg my-4' text='Save' />
     </form>
