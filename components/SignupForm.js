@@ -10,7 +10,7 @@ export default function SignupForm() {
   const submitData = async (data) => {
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API}/users`, data, { headers: { 'Content-Type': 'application/json' }});
-      router.push('/');
+      router.push('/login');
     } catch (error) {
       console.log({ error });
     }
@@ -155,7 +155,7 @@ export default function SignupForm() {
         <p className='text-sm text-red-800 text-center'>{errors.password?.type === 'required' && 'password is required' }</p>
         <p className='text-sm text-red-800 text-center'>{errors.password?.type === 'minLength' && 'minLength should be 3' }</p>
       </div>
-      <Button handleClick={handleSubmit(submitData)} classes='bg-blue-400 px-2 py-1 rounded-lg my-4' text='Save' />
+      <Button handleClick={handleSubmit(submitData)} classes='bg-blue-400 px-2 py-1 rounded-lg my-4' text='Register' />
     </form>
   )
 }

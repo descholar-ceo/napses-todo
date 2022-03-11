@@ -59,6 +59,19 @@
       "email": "emma@nuel.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "name": "new user",
+      "mobile": "0782229462",
+      "gender": "Male",
+      "country": "US",
+      "hobbies": [
+        "Movies",
+        "Coding"
+      ],
+      "email": "newuser@new.ne",
+      "password": "123456",
+      "id": 3
     }
   ],
   "sessions": []
